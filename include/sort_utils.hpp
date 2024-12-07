@@ -1,15 +1,15 @@
-#ifndef SORT_UTILS_HPP
-#define SORT_UTILS_HPP
+#pragma once
 
 #include <vector>
 #include <string_view>
 #include <variant>
 #include <execution>
 
-
 namespace se = std::execution;
 
-enum class Policy {
+// To avoid weak string based APIs
+enum class Policy
+{
     Sequential,
     Vectorized,
     Parallel,
@@ -26,7 +26,6 @@ using ExecutionPolicyVariant = std::variant<
 
 ExecutionPolicyVariant getExecutionPolicy(Policy policy);
 
-void measure_sort(const std::vector<int>& vec, Policy policy);
+double measure_sort(std::vector<int> &vec, Policy policy);
 
-#endif // SORT_UTILS_HPP
-
+void initializeVector(std::vector<int> &vec, std::size_t size);
